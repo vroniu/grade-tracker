@@ -1,0 +1,98 @@
+@model IEnumerable<grade_tracker.Models.Grade>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Grades</h1>
+
+<p>
+    <a asp-action="Create">
+        <button type="button" class="btn btn-primary">
+            <i class="bi bi-check"></i>
+            Add new grade
+        </button>
+    </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Grade
+            </th>
+            <th>
+                Additional comment
+            </th>
+            <th>
+                Subject name
+            </th>
+            <th>
+                Student
+            </th>
+            <th>
+                Graded by
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @if (item.AssignedGrade < 3)
+                {
+                    <button type="button" class="btn btn-danger">
+                        @Html.DisplayFor(modelItem => item.AssignedGrade)
+                    </button>
+                }
+                @if (item.AssignedGrade > 2 && item.AssignedGrade < 5)
+                {
+                    <button type="button" class="btn btn-warning">
+                        @Html.DisplayFor(modelItem => item.AssignedGrade)
+                    </button>
+                }
+                @if (item.AssignedGrade > 4)
+                {
+                    <button type="button" class="btn btn-success">
+                        @Html.DisplayFor(modelItem => item.AssignedGrade)
+                    </button>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdditionalComment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.FirstName)
+                @Html.DisplayFor(modelItem => item.Student.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Teacher.FirstName)
+                @Html.DisplayFor(modelItem => item.Teacher.LastName)
+            </td>
+            <td class="entity-buttons">
+                <a asp-action="Edit" asp-route-id="@item.GradeId">
+                    <button type="button" class="btn btn-primary">
+                        <i class="bi bi-pencil-fill"></i>
+                        Edit
+                    </button>
+                </a>
+                <a asp-action="Details" asp-route-id="@item.GradeId">
+                    <button type="button" class="btn btn-primary">
+                        <i class="bi bi-list-stars"></i>
+                        View details
+                    </button>
+                </a>
+                <a asp-action="Delete" asp-route-id="@item.GradeId">
+                    <button type="button" class="btn btn-danger">
+                        <i class="bi bi-trash3-fill"></i>
+                        Delete
+                    </button>
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

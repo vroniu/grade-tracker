@@ -1,0 +1,53 @@
+@model grade_tracker.Models.Grade
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details about the grade</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Assigned grade
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AssignedGrade)
+        </dd>
+        <dt class = "col-sm-2">
+            Additional comment
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AdditionalComment)
+        </dd>
+        <dt class="col-sm-2">
+            Subject
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Subject.Name)
+        </dd>
+        <dt class="col-sm-2">
+            Student
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Student.FirstName)
+            @Html.DisplayFor(model => model.Student.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            Graded by
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Teacher.FirstName)
+            @Html.DisplayFor(model => model.Teacher.LastName)
+        </dd>
+    </dl>
+</div>
+<div class="button-container">
+    <a asp-action="Edit" asp-route-id="@Model?.GradeId">
+        <button type="button" class="btn btn-primary">Edit</button>
+    </a>
+    <a asp-action="Index">
+        <button type="button" class="btn btn-secondary">Go back</button>
+    </a>
+</div>

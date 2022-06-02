@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+        <h1 class="display-4">
+            <i class="bi bi-app-indicator"></i>
+        </h1>
+    <h3 class="display-4">
+        Grade Tracker
+    </h3>
+    <p>
+        Welcome to Grade Tracker! This app allows you to manage a school system. Explore the features below.
+    </p>
+    <div class="home-grid">
+        <div class="card">
+            <h1>
+                <i class="bi bi-people"></i>
+            </h1>
+            <div class="card-body">
+                <h5 class="card-title">Students</h5>
+                <p class="card-text">View all the students, register new students and modify existing ones. Check which subjects they are attending using the 'View details' page.</p>
+                <div class="d-grid gap-2">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Index">
+                        <button class="btn btn-primary" type="button" style="width: 100%">Go to page</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h1>
+                <i class="bi bi-person-check"></i>
+            </h1>
+            <div class="card-body">
+                <h5 class="card-title">Teachers</h5>
+                <p class="card-text">View all the teachers, register new teachers and modify existing ones. Check which subjects they are teaching using the 'View details' page.</p>
+                <div class="d-grid gap-2">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Index">
+                        <button class="btn btn-primary" type="button" style="width: 100%">Go to page</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h1>
+                <i class="bi bi-card-checklist"></i>
+            </h1>
+            <div class="card-body">
+                <h5 class="card-title">Subjects</h5>
+                <p class="card-text">View all the subjects. Create new subjects and modify existing ones, with the ability to assign teachers and students to them. Use the 'View details' page to see the assigned teachers and students.</p>
+                <div class="d-grid gap-2">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Subject" asp-action="Index">
+                        <button class="btn btn-primary" type="button" style="width: 100%">Go to page</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h1>
+                <i class="bi bi-123"></i>
+            </h1>
+            <div class="card-body">
+                <h5 class="card-title">Grades</h5>
+                <p class="card-text">View all the grades, with highlighted colors for easier reading. Assign new grades and modify exising ones with the ability to choose which students gets the grade and which teacher graded it.</p>
+                <div class="d-grid gap-2">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Grade" asp-action="Index">
+                        <button class="btn btn-primary" type="button" style="width: 100%">Go to page</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+@model grade_tracker.Models.Subject
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Subject</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+                <div class="form-group">
+                    <label asp-for="Students" class="control-label">Assign students</label>
+                    <ul>
+                        @foreach (var student in ViewBag.Students)
+                        {
+                            <li>
+                                <input type="checkbox" name="SelectedStudents" value="@student.StudentId">
+                                @student.FirstName @student.LastName
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Teachers" class="control-label">Assign teachers</label>
+                    <ul>
+                        @foreach (var teacher in ViewBag.Teachers)
+                        {
+                            <li>
+                                <input type="checkbox" name="SelectedTeachers" value="@teacher.TeacherId" >
+                                @teacher.FirstName @teacher.LastName
+                            </li>
+                        }
+                    </ul>
+                </div>
+            <div class="button-container">
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+                <a asp-action="Index">
+                    <button type="button" class="btn btn-secondary">Go back</button>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
